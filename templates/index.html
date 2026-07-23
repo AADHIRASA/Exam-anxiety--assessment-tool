@@ -13,3 +13,8 @@
 	<button type="submit">Submit</button>
 <p>{{ user_count }} students have used this tool so far.</p>
 </form>
+{% if result %}
+<h2>your Results</h2>
+<p> your average score: {{ result }}</p>
+<p>{{ feedback }}</p>
+{% endif %}
