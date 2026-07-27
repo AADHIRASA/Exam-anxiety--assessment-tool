@@ -1,0 +1,49 @@
+body {
+    background-color: #FBF0E9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #5C3A2E;
+    max-width: 640px;
+    margin: 50px auto;
+    padding: 0 24px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #B5613F;
+    margin-bottom: 4px;
+}
+
+h2 {
+    color: #B5613F;
+}
+
+.disclaimer {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color: #8C5C48;
+    margin-bottom: 28px;
+    font-size: 0.95em;
+}
+
+.instructions {
+    background-color: #F0D9C8;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+}
+
+button {
+    background-color: #B5613F;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #D08059;
+}

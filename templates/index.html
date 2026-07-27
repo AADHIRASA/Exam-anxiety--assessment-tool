@@ -1,14 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<title>Exam Anxiety Assessment Tool</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h1>Exam Anxiety Assessment Tool</h1>
+	<p class="disclaimer">This is an educational self-reflection tool, not a medical or diagnostic tool.</p>
+	<div class="instructions">
+		<h2>Please choose an option from the scale of 1 to 5 for each question.</h2>
+		<p>After submitting, you will view the feedback about your anxiety level based on your answers.</p>
+</div>
 <form method="post">
-	<p>How often do you feel anxious before an exam</p>
-	<input type="range" name="q1" min="1" max="5">
+<p>How often do you feel anxious before an exam</p>
+	<input type="radio" name="q1" value="1"> 1
+	<input type="radio" name="q1" value="2"> 2
+	<input type="radio" name="q1" value="3"> 3
+	<input type="radio" name="q1" value="4"> 4
+	<input type="radio" name="q1" value="5"> 5
 <P>How often have you forgotten your answers due to exam anxiety</p>
-	<input type="range" name="q2" min="1" max="5">
-	<P> How often do you have trouble sleeping before exams</p>
-	<input type="range" name="q3" min="1" max="5">
+	<input type="radio" name="q2" value="1"> 1
+	<input type="radio" name="q2" value="2"> 2
+	<input type="radio" name="q2" value="3"> 3
+	<input type="radio" name="q2" value="4"> 4
+	<input type="radio" name="q2" value="5"> 5
+<P> How often do you have trouble sleeping before exams</p>
+	<input type="radio" name="q3" value="1"> 1
+	<input type="radio" name="q3" value="2"> 2
+	<input type="radio" name="q3" value="3"> 3
+	<input type="radio" name="q3" value="4"> 4
+	<input type="radio" name="q3" value="5"> 5
 <p>How often have you lost confidence due to exam anxiety</P>
-	<input type="range" name="q4" min="1" max="5">
+	<input type="radio" name="q4" value="1"> 1
+	<input type="radio" name="q4" value="2"> 2
+	<input type="radio" name="q4" value="3"> 3
+	<input type="radio" name="q4" value="4"> 4
+	<input type="radio" name="q4" value="5"> 5
 <p>How often has anxiety affected your studies before exams</p>
-	<input type="range" name="q5" min="1" max="5">
+	<input type="radio" name="q5" value="1"> 1
+	<input type="radio" name="q5" value="2"> 2
+	<input type="radio" name="q5" value="3"> 3
+	<input type="radio" name="q5" value="4"> 4
+	<input type="radio" name="q5" value="5"> 5
 	<br><br>
 	<button type="submit">Submit</button>
 <p>{{ user_count }} students have used this tool so far.</p>
@@ -18,3 +53,5 @@
 <p> your average score: {{ result }}</p>
 <p>{{ feedback }}</p>
 {% endif %}
+</body>
+</html>
