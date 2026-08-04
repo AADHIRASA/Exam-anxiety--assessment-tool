@@ -6,45 +6,48 @@
 
 ## Hosting Service Used
 
-PythonAnywhere (free "Beginner" tier) was chosen because it supports Python/Flask directly and, unlike some free alternatives, provides persistent storage — meaning the SQLite database (and the running user count) is preserved even when the site is temporarily paused. This mattered because the project relies on an accurate, growing count of real submissions over time.
+I used PythonAnywhere's free Beginner plan because it works really well with Python and Flask. Unlike some other free hosting websites it keeps the SQLite database even if the website gets paused. That was important because I wanted the number of submissions to keep increasing instead of getting reset.
 
 ## Deployment Steps
 
-1. Created a free PythonAnywhere account.
-2. Opened a Bash console and cloned the GitHub repository directly:
+1. Made a free PythonAnywhere account.
+2. Opened the Bash console and cloned my GitHub repository.
+
    ```
    git clone https://github.com/AADHIRASA/Exam-anxiety--assessment-tool.git
    ```
-3. Confirmed Flask was already available in the environment.
-4. Created a new web app via the Web tab, selecting Flask and Python 3.10, and pointed it to the cloned project's `app.py`.
-5. Set the Working Directory to match the project's Source Code directory, so relative file paths (like the SQLite database) resolve correctly.
-6. Recreated the SQLite `responses` table directly on the server, since the database file itself is excluded from Git via `.gitignore` (by design, since database files shouldn't be version-controlled).
-7. Reloaded the web app and tested the live link.
+3. Checked that Flask was already installed.
+4. Created a new Flask web app with Python 3.10 and linked it to my project's `app.py`.
+5. Set the Working Directory to the same folder as the project so files like `anxiety.db` could be found properly.
+6. Made the `responses` table again on the server because `anxiety.db` isn't on GitHub. It's in `.gitignore` so it doesn't get uploaded.
+7. Reloaded the website and tested if everything was working.
 
-## Problems Encountered and Fixes
+## Problems I Ran Into
 
-- PythonAnywhere's setup wizard initially overwrote `app.py` with its own default "Hello World" template, since the wizard offers to generate a starter file at the chosen path. Fixed by running `git checkout -- app.py` to restore the committed version from the project's own Git history.
-- The homepage template (`index.html`) on the deployed copy was missing its heading and disclaimer section (a leftover from an earlier, incomplete commit). Fixed by manually restoring the missing HTML directly in the PythonAnywhere file editor.
-- A 500 Internal Server Error occurred because the app's Working Directory did not match its Source Code directory, causing it to look for the database in the wrong location. Fixed by aligning the two paths in the Web app configuration.
+* PythonAnywhere replaced my `app.py` with its own Hello World file when I first made the web app. I fixed it by running `git checkout -- app.py` to get my file back.
 
-## Known Limitation: Free Tier Maintenance
+* The deployed website was missing the heading and disclaimer because the `index.html` file wasn't fully updated. I fixed it by adding the missing HTML back using the PythonAnywhere editor.
 
-PythonAnywhere's free tier requires logging in at least once a month and clicking "Run until 1 month from today" to keep the site active; otherwise it automatically pauses (PythonAnywhere sends an email reminder beforehand). Importantly, pausing does not delete any data — the SQLite database and all saved responses remain intact and are restored the moment the site is reactivated. A recurring monthly reminder is used to ensure the site stays available for ongoing and future reference.
+* I got a 500 Internal Server Error because the Working Directory wasn't the same as the Source Code directory. The app was looking for the database in the wrong place. Once I changed the paths to match everything worked.
 
-## Data Persistence
+## Free Tier Limitation
 
-The deployed database is separate from the local development database (used in the GitHub Codespace). Submissions made via the live public link accumulate independently on PythonAnywhere's server and are not affected by local development work.
+The free PythonAnywhere plan needs me to log in once every month and click **"Run until 1 month from today"**. If I don't do that the website gets paused. They send an email reminder before it happens. The good thing is none of the data gets deleted. The database stays the same and starts working again once I reactivate the website. I also keep a monthly reminder so I don't forget.
+
+## Data Storage
+
+The database on the website is separate from the one in my GitHub Codespace. Any responses from the live website stay on PythonAnywhere and don't affect the local database I use while developing.
 
 ## Keeping the Codespace and the Live Site in Sync
 
-The Codespace and the live PythonAnywhere site are two separate copies of the project, not one shared thing. Editing code in the Codespace — changing colours, wording, anything — only changes that copy. It does not automatically appear on the live site.
+The Codespace and the live website are two separate copies of the project. If I change something in the Codespace it won't automatically show up on the website.
 
-The change actually reaches the live site in three steps:
+To update the live website I do three things:
 
-1. Push the change from the Codespace to GitHub, as usual.
-2. On PythonAnywhere, open a Bash console, move into the project folder, and run `git pull` to bring that update in.
-3. Go to the Web tab and click **Reload** — this is the step that actually makes the live site use the new code.
+1. Push the changes from the Codespace to GitHub.
+2. Open a Bash console in PythonAnywhere and run `git pull`.
+3. Go to the Web tab and click **Reload**.
 
-Skipping any one of these three steps means the live site keeps showing the old version, even though the Codespace looks correct. This came up directly during development, when a fix made in the Codespace didn't show up on the live link until it was manually pulled and reloaded on PythonAnywhere.
+If I skip one of these steps the website keeps showing the old version. I found this out while working on the project because one of my fixes didn't show up until I pulled the changes and reloaded the website.
 
-This exact process was used again later to deploy an update to the page's design, including a custom colour theme. The same push, pull, and reload sequence deployed the change successfully, confirming the workflow holds for ongoing updates, not just the initial deployment.
+I used the same steps later when I changed the website design and added a custom colour theme. It worked the same way and updated the live website without any problems.

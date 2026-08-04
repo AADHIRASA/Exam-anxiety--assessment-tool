@@ -2,24 +2,24 @@
 
 ## The Problem
 
-Exam anxiety affects a large proportion of students, but it is rarely measured or reflected on directly. Students commonly experience symptoms such as difficulty sleeping before exams, losing confidence, or forgetting material they actually know — yet these are usually noticed only in passing, if at all, rather than being looked at as a pattern worth understanding. There is no simple, quick way for a student to check in on their own exam anxiety and get an honest, judgement-free sense of where they stand.
+Exam anxiety is something a lot of students deal with, but most of the time they don't really think about how much it affects them. Things like losing sleep before exams, forgetting answers they actually know, or losing confidence are pretty common. Most people just move on without really thinking about it. There also isn't a quick and simple way for students to check how much exam anxiety is affecting them.
 
-## Why This Was Developed
+## Why I Made This
 
-The idea came from watching friends go through real exam anxiety — the kind that shows up as lost sleep, second-guessing answers they actually knew, or losing confidence right before walking into an exam. There was no easy way to help them see this clearly or take it seriously, beyond just talking about it after the fact.
+The idea came from seeing my friends deal with exam anxiety. Some of them couldn't sleep before exams, some kept second guessing answers they actually knew, and some just lost confidence before going into the exam hall. I wanted to make something that could help them understand their exam anxiety a bit better instead of only talking about it after the exam.
 
-After completing Harvard's CS50x, this seemed like a genuine, useful problem to build something for — not just a coding exercise, but a small tool that could actually help the people around me notice their own exam anxiety in a simple, honest way, in about two minutes.
+After finishing Harvard's CS50x, I thought this would be a good project to build. I wanted it to be something useful and not just another coding project. The whole idea was to make something simple that anyone could finish in about two minutes.
 
 ## Who Benefits
 
-Primarily, students preparing for exams — the tool was built with specific friends in mind, but works for any student, regardless of grade level, curriculum, or subject. Secondarily, teachers or mentors who want a simple way to prompt students to reflect on their exam-related stress, without needing any clinical training or specialised tools.
+This tool is mainly for students preparing for exams. I first made it with my friends in mind, but anyone can use it no matter what grade, board, or subject they study. Teachers or mentors could also use it if they want students to think about their exam stress without needing anything complicated.
 
 ## Real Usage
 
-As of the most recent check, **118 real submissions** have been recorded in the live database, with roughly 20–25 more expected as the tool continues to be shared. This is confirmed both by the live count shown on the site and by checking the database directly — not an estimate.
+At the time of writing this, the website has **118 real submissions** in the database, with around 20-25 more expected as more people use it. This isn't just an estimate. The number comes from the live counter on the website and by checking the database directly.
 
-This is a small, single-class or small-cohort tool, not built to scale to thousands of users, and that was never the goal. The value of the project was never about reaching a large number — it was about whether the friends and classmates who actually needed it would use it honestly. 118 real people choosing to answer five honest questions about their own exam anxiety is, on its own terms, a genuine measure of that.
+This project was never meant for thousands of users. It was made for my classmates and other students around me. The main goal wasn't getting a huge number of users. It was making something people would actually use, and 118 people taking the time to answer the questions shows that they did.
 
 ## Evidence of Real Use
 
-The live link (aadhirasa.pythonanywhere.com) was shared directly with students. Screenshots of genuine usage — the homepage, a completed submission, and the live count — accompany this document as concrete evidence that the tool was actually used by real students, not just built and demonstrated privately.
+I shared the live website (`aadhirasa.pythonanywhere.com`) with students directly. Screenshots of the homepage, a completed submission, and the live student count are included with this report to show that the website was actually used by real students and not just tested by me.

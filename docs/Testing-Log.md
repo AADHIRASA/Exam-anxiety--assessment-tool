@@ -1,36 +1,84 @@
 # Testing Log
 
-## Approach
+# Approach
 
-Testing was done manually throughout development, by submitting the form with different answer combinations and checking the result against the expected scoring band, rather than through automated tests (outside the scope of CS50x). Each test below was run on the live, deployed version.
+I tested the website myself while I was making it. I tried different answer fixations and checked if the result matched the right scoring range. I didn't use automated tests because they weren't really needed for this project. Every test below was done on the live website.
 
-## Scoring Band Tests
+# Scoring Range Tests
 
-| Test | Selected Options (q1-q5) | Expected Average | Expected Band | Result |
-|---|---|---|---|---|
-| Lowest possible score | 1, 1, 1, 1, 1 | 1.0 | Low anxiety | Pass |
-| Boundary: top of Low | 2, 2, 2, 3, 2 | 2.2 | Low anxiety | Pass |
-| Boundary: start of Moderate | 2, 3, 2, 3, 2 | 2.4 | Moderate anxiety | Pass |
-| Mid-range Moderate | 3, 3, 4, 3, 3 | 3.2 | Moderate anxiety | Pass |
-| Boundary: start of High | 4, 4, 4, 4, 3 | 3.8 | High anxiety | Pass |
-| Highest possible score | 5, 5, 5, 5, 5 | 5.0 | High anxiety | Pass |
+**Lowest possible score**
+
+* Answers: 1, 1, 1, 1, 1
+* Expected average: 1.0
+* Expected result: Low anxiety
+* Result: Pass
+
+**Top of Low Range**
+
+* Answers: 2, 2, 2, 3, 2
+* Expected average: 2.2
+* Expected result: Low anxiety
+* Result: Pass
+
+**Start of Moderate Range**
+
+* Answers: 2, 3, 2, 3, 2
+* Expected average: 2.4
+* Expected result: Moderate anxiety
+* Result: Pass
+
+**Middle of Moderate Range**
+
+* Answers: 3, 3, 4, 3, 3
+* Expected average: 3.2
+* Expected result: Moderate anxiety
+* Result: Pass
+
+**Start of High Range**
+
+* Answers: 4, 4, 4, 4, 3
+* Expected average: 3.8
+* Expected result: High anxiety
+* Result: Pass
+
+**Highest possible score**
+
+* Answers: 5, 5, 5, 5, 5
+* Expected average: 5.0
+* Expected result: High anxiety
+* Result: Pass
 
 ## Database and Count Tests
 
-- Verified each submission creates exactly one new row in the `responses` table, checked directly with `SELECT * FROM responses;` in the SQLite command line.
-- Verified the displayed user count matches `SELECT COUNT(*) FROM responses;` after multiple submissions.
-- Confirmed a normal page visit (no submission) does not insert a row, and does not error, by checking the count stays the same after simply refreshing without submitting.
+* I checked that every submission added one new row to the `responses` table by using `SELECT * FROM responses;` in SQLite.
 
-## Bugs Found During Testing
+* I also checked that the student count on the website matched `SELECT COUNT(*) FROM responses;` after a few submissions.
 
-| Bug | How It Was Found | Fix |
-|---|---|---|
-| Form submitted as GET instead of POST | Checked Flask's terminal request log after clicking Submit; saw GET instead of POST | Found a missing opening `<` on the `<form>` tag, breaking it entirely |
-| 405 Method Not Allowed | Same terminal log check, after fixing the form tag | `app.py` route was missing `methods=["GET", "POST"]` |
-| 500 error on live deployment | Checked PythonAnywhere's error log, found `sqlite3.OperationalError` | Working directory did not match source code directory on the server |
-| Homepage missing heading/disclaimer on live site | Visual check after deployment — page loaded but looked incomplete | Restored missing HTML directly; later confirmed local copy was already correct |
-| CSS not applying after styling was added | Visual check — page loaded correctly but with no colour or layout changes | Traced with `find` to discover `style.css` had been created as a folder, not a file; corrected the path with `mv` |
+* I checked that just opening or refreshing the page didn't add a new row. The count stayed the same after refreshing without submitting.
 
-## Cross-Environment Check
+# Bugs I Found
 
-Confirmed the app behaves the same way in both environments: the development Codespace (local testing) and the live PythonAnywhere deployment (public link). Each environment has its own separate database, so submission counts differ between them by design — this was verified rather than assumed.
+**Form submitted as GET instead of POST**
+
+I found this after checking Flask's terminal when I clicked Submit. It showed a GET request instead of POST. I had forgotten the opening `<` on the `<form>` tag. After I added it everything worked.
+
+**405 Method Not Allowed**
+
+After fixing the form I got a 405 error. I checked `app.py` and found I forgot to add `methods=["GET", "POST"]` to the route.
+
+**500 Error on the Live Website**
+
+I checked the PythonAnywhere error log and found a `sqlite3.OperationalError`. The Working Directory didn't match the Source Code directory so the app couldn't find the database. I fixed the paths and it worked.
+
+**Homepage Missing the Heading and Disclaimer**
+
+After I deployed the website I noticed the heading and disclaimer were missing. I added the missing HTML back in PythonAnywhere. Later I checked my local copy and it already had it.
+
+**CSS Wasn't Working**
+
+The page opened but the styling wasn't showing. I used `find` and found that `style.css` had been made as a folder instead of a file. I fixed it with `mv` and the CSS worked.
+
+# Cross-Environment Check
+
+I checked the project in both my Codespace and on the live PythonAnywhere website. Both worked the same. The only difference was the database because each one has its own `anxiety.db` file, so the number of submissions is different on each one.
+
