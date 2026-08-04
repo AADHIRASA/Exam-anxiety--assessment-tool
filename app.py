@@ -21,11 +21,11 @@ def index ():
         result=round(avg, 1)
         # which anxiety level did it give
         if result <=2.3:
-            feedback="you response suggest exam anxiety is not a major factor for you."
+            feedback="Your response suggests that exam anxiety is not a major factor for you."
         elif result <=3.6:
-            feedback="you exam anxiety level is moderate,suggested structured planning or taking a small break."
+            feedback="Your exam anxiety level is moderate, suggested structured planning or taking a small break."
         else:
-            feedback="you exam stress is more.suggested talking to your mentor,teacher,family or friends."
+            feedback="Your exam stress is more. Suggested talking to your mentor, teacher, family or friends."
           #how many ppl used this
     count=db.execute("SELECT COUNT(*) FROM RESPONSES").fetchone()[0]
     db.close()
