@@ -6,23 +6,27 @@ def index ():
     db= sqlite3. connect("anxiety.db")
     result=None
     feedback=None
+    # only do ts if the form was submitted
     if request.method == "POST":
         q1=request.form.get("q1")
         q2=request.form.get("q2")
         q3=request.form.get("q3")
         q4=request.form.get("q4")
         q5=request.form.get("q5")
+        # save the ans
         db.execute("INSERT INTO responses(q1,q2,q3,q4,q5) VALUES (?,?,?,?,?)",(q1,q2,q3,q4,q5))
         db.commit()
-        average=(int(q1) + int(q2) + int(q3) + int(q4) + int(q5))/5
-        result=round(average,1)
+        # calc avg of the input 
+        avg=(int(q1) + int(q2) + int(q3) + int(q4) + int(q5))/5
+        result=round(avg, 1)
+        # which anxiety level did it give
         if result <=2.3:
             feedback="you response suggest exam anxiety is not a major factor for you."
         elif result <=3.6:
             feedback="you exam anxiety level is moderate,suggested structured planning or taking a small break."
         else:
             feedback="you exam stress is more.suggested talking to your mentor,teacher,family or friends."
-
+          #how many ppl used this
     count=db.execute("SELECT COUNT(*) FROM RESPONSES").fetchone()[0]
     db.close()
     return render_template("index.html", user_count=count,result=result,feedback=feedback)
